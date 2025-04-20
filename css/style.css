@@ -1,0 +1,531 @@
+@font-face {
+    font-family: regular;
+    src: url(../font/Inconsolata-Regular.ttf);
+}
+@font-face {
+    font-family:bold ;
+    src: url(../font/Inconsolata-Bold.ttf);
+}
+@font-face {
+    font-family: light;
+    src: url(../font/Inconsolata-Light.ttf);
+}
+body{
+    font-family: regular;
+}
+body::selection{
+    color: #23F10E;
+}
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
+:root{
+    --red:#ed0000;
+    --green:#23F10E;
+    --orange:#E1341E;
+    --white:#fff;
+    --gray:#ccc;
+    --dark:#666;
+    --black:#000;
+}
+.flex{
+    display: flex;
+    flex-flow: row nowrap;
+}
+.container{
+    width: 90%;
+    margin:0 auto;
+}
+.title{
+    padding: 20px 0;
+    margin: 20px 0;
+}
+.center{
+    text-align: center;
+}
+.title h2{
+    position: relative;
+    display: inline-block;
+}
+.title h2::after{            /*the black line under the title*/
+    content: "";
+    position: absolute;
+    top: 110%;
+    left: 25%;
+    right: 25%;
+    width: 50%;
+    height: 2px;
+    background-color: #000;
+    transition: .2s;
+}
+.title h2:hover::after{
+    width: 100%;
+    left:0% ;
+    right: 0;
+}
+/* .......................... OFFER.......start............................. */
+.offer{
+    height: 30px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color:var(--red);
+    color: var(--white);
+    text-align: center;
+    overflow: hidden;     /*لاخفاء الفائض لأنه بدونها عند تنفيذ الهوفر يتم تنفيذه قبل وصول الفارة لللون الاحمر*/
+}
+.offer-content{
+    line-height: 2rem;    /*double of the font size of ROOT element*/
+    animation: toggle 6s infinite  ;
+}
+@keyframes toggle {            /*flip flop*/
+    0%{transform: translatey(0);}
+    50%{transform: translatey(0);}
+    51%{transform: translateY(-30px);}
+    100%{transform: translatey(-30px);}
+}
+.offer-content:hover{
+    cursor: pointer;
+    animation-play-state: paused;
+}
+/* ............................OFFER.......end...................................... */
+/* ........................... HEADER .....start............. */
+.wide{               /*because of header is container dont take all width*/
+    position: fixed;
+    top: 30px;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    background-color: #fff;
+}
+header{
+    justify-content: space-between;
+    align-items:baseline;
+    width: 100%;
+    z-index: 99;
+    background-color: #fff;
+    padding: 10px 0px;
+}
+header .logo{
+    height: 30px;
+    align-self:center;
+    border-left: 5px solid var(--orange);
+    cursor: pointer;
+ }
+header nav a{
+     padding: 5px 10px;
+     color: var(--black);
+ }
+header nav li{
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+}
+header .dropcontent{
+    min-width: 160px;
+    box-shadow: 1px 1px 5px var(--gray);
+    background-color: #fff;
+    position: absolute;
+    top: 110%;
+    left: 10%;
+    display: none;
+    z-index: 2;
+}
+header .dropdown:hover .dropcontent{
+    display: block;
+}
+header .dropcontent a{
+    display: block;
+}
+header .dropcontent a:hover{
+    background-color: var(--gray);
+}
+header li::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-width: 1px 0px 1px 0px;
+    border-style:  solid;
+    border-color: var(--dark);
+    height: 100%;
+    width: 0;
+    transition: .4s;
+}
+header li:hover::after{
+    width: 102%;
+}
+header li::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    border-width:0px 1px 0px 1px;
+    border-style:  solid;
+    border-color:  var(--dark);
+    transition: .4s;
+}
+header li:hover::before{
+    height: 103%;
+}
+header .help{
+    align-items: center;
+}
+header .search{
+    position: relative;
+    padding-right: 20px;
+}
+header .search input[type="search"]{
+    padding:5px 0px 5px 20px;
+}
+header input:hover{
+    width: 105%;
+}
+header .search>i{           /*search icon*/
+    position: absolute;
+    top: 50%;
+    left: 1%;
+    transform: translateY(-50%);
+}
+header .icon{
+    color: var(--dark);
+    font-size: larger;
+    cursor: pointer;
+}
+header .icon i:hover{
+    transform: scale(1.3);
+}
+header .icon .cart{
+    color: var(--orange);
+}
+/* .............................HEADER.......end........................ */
+/* .............................HERO .........start.......................... */
+.hero{
+    margin-top: 80px;
+    height: calc(100vh - 80px);
+    background: url(../img/hero-girl.avif) no-repeat center;
+    background-size:contain;
+    position: relative;
+}
+.hero .big-title{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    padding-left: 5px;
+}
+.hero h1{
+    border-left: 5px solid var(--orange);
+    padding-left: 5px;
+}
+.hero p{
+    color: var(--orange);
+}
+.hero .left{
+    left: 100px;
+}
+.hero .right{
+    right: 100px;
+}
+.hero i{
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 1px solid var(--orange);
+    border-radius: 50%;
+    color: var(--orange);
+    padding: 5px;
+}
+/* ..............................HERO............ end...................................... */
+/* ............................. NEW ARRAIVAL.....start................................. */
+.new{
+    position: relative;    
+}
+.new .arrow{                      /*خصائص اسهم السلايد*/
+    position: absolute;
+    top: 50%;
+    color: var(--dark);
+}
+.new i:hover{
+    cursor: pointer;
+}
+.new .left{                      /*سهم السلايد اليسار*/
+    left: 4%;
+}
+.new .right{                     /*سهم السلايد الايمن*/
+    right: 4%;
+}
+.slide{
+    justify-content: space-between;
+}
+.box{
+    width: 24%;
+    position: relative;
+}
+.box .hidden-img,.box .hide{
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity .5s;
+}
+.box .head{
+    position: relative;
+    height: 5%;
+}
+.box .head i{
+    color: var(--dark);
+    padding: 2px;
+}
+.box .head .hide{/*cart icon*/
+    color: var(--orange);
+}
+.box .head span{/*new arrival word*/
+    position: absolute;
+    right: 1%;
+    color: var(--dark);
+}
+.box:hover .hide{
+    visibility: visible;
+    opacity: 1;
+}
+.box .img:hover .hidden-img{
+    visibility: visible;
+    opacity: 1;
+}
+.box .img img{
+    cursor: pointer;
+    width: 100%;
+}
+.box .overlay{
+    position: absolute;
+    left: 0;
+    top: 5%;
+}
+.box .size{
+    position: absolute;
+    left: 1%;
+    top: 80%;
+    padding: 5px 1%;
+    background-color: #aaaaaa56;
+    opacity: 0.5;
+}
+.new .show h3{        /*show all button*/
+    display: inline-block;
+    padding: 10px 15px;
+    color:#fff;
+    background-color: #000;
+    cursor: pointer;
+}
+.new .show h3:hover{
+    background-color: var(--orange);
+    color: #000;
+    border-radius: 2px;
+}
+/* ..............................NEW ARRAIVAL........end............................. */
+/* ..............................WIDE-SCREEN................start............................ */
+.wide-screen{
+    margin: 65px auto;
+}
+.wide-screen p{
+    font-family: regular;
+    font-size: 25px;
+    margin-top: 20px;
+}
+.wide-screen img:hover{
+    cursor: pointer;
+}
+/* ...............................WIDE-SCREEN................end............................. */
+
+/* ..............................WOMAN.....start..................................... */
+.woman{
+    margin: 30px auto;
+    justify-content: space-between;
+}
+.column{
+    width: 49%;
+}
+.column img{
+    max-width: 100%;
+    cursor: pointer;
+}
+.column p{
+    font-size: 30px;
+    line-height: 2;
+    padding-bottom: 10px;
+    font-family: bold
+}
+.column h2{
+    font-family: light;
+    font-size: 20px;
+}
+.col2{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+}
+/* ..............................WOMAN......end...................................... */
+
+/* ...............................3d card...start.................................... */
+.title p{
+    font-size: 35px;
+    padding: 20px;
+}
+.three-d{
+    perspective: 2500px;     /*for 3d effect*/
+    flex-flow: row wrap;
+}
+.card{
+    flex-basis: 24%;               /*initial width*/  
+    height: 371px;               /*as the picture*/
+    justify-content: space-between;    
+    /* عندما ننفذ هوفر على الكارد يتم تنفيذ الدوران دون رجفة بسبب تأثر الهوفر نتيجة الدوران */
+    transform-style: preserve-3d;   /*for 3d effect*/
+    margin: 20px auto;
+}
+.card .parent{
+    width: 100%;
+    position: relative;
+    transition: 1.5s;
+    transform-style: preserve-3d; /*for 3d effect*/
+}
+.card:hover .parent{
+    transform: rotateY(180deg);
+    cursor: pointer;
+}
+.card .front,.card .back{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.card .front img,.card .back img{
+    width: 100%;
+}
+.card .front{
+    z-index: 2;
+    backface-visibility: hidden;
+}
+.card .back{
+    backface-visibility: hidden;
+    transform: rotateY(180deg);  
+}
+.card .back .info{
+    position: absolute;
+    top: 80%;
+    left: 0;
+    padding: 0 10px;
+    width: 100%;
+    height: 20%;
+    background-color: #00000067;
+}
+.card .back .info p{
+    display: inline-block;
+    color: #fff;
+}
+.card .back .info p .price{
+    font-size: 20px;
+}
+.card .back .info .rate{
+    position: absolute;
+    right: 0;
+    direction: rtl;    /*for rating effect*/
+    cursor: pointer;
+}
+.rate i:hover,.rate i:hover ~ i{     /*for rating effect*/
+    color: var(--orange);
+}
+.card .back .info button{
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+    padding: 10px 20px;
+    color: #fff;
+    border: none;
+    background-color: var(--orange);
+    cursor: pointer;
+}
+/* ...............................3d card....end...................................... */
+/* ...............................BEST of       start............................... */
+.best{
+   justify-content: space-between; 
+}
+.best .box{
+    cursor: pointer;
+    overflow: hidden;
+}
+.best .box img{
+    width: 100%;
+    transition: 2s;
+}
+.best .box .overlay-box{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 10px;
+    width: 100%;
+}
+.best .box .overlay-box i{
+    color: var(--orange);
+}
+.best .box button{
+    opacity: 0;
+    position: absolute;
+    bottom: 1%;
+    left: 1%;
+    padding: 10px 20px;
+    color: #fff;
+    border: none;
+    background-color: var(--orange);
+    cursor: pointer;
+}
+.best .box:hover button{
+    opacity: 1;
+}
+.best .box:hover img{
+    transform: scale(2);
+}
+/* ...............................BEST of       end */
+/*................................FOOTER        start.......................*/
+.footer{
+    font-size: 20px;
+    padding:30px 70px;
+    margin-top: 30px;
+    background-color: #f1f1f1;
+    flex-flow: column nowrap;
+    align-items: center;
+    position: relative;
+}
+.footer .down{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+    border-width: 20px;
+
+}
+.xo{
+    display: inline-block;
+    border-left: 5px solid var(--orange);
+    padding-left: 5px;
+    font-size: 30px;
+}
+.footer .secondary{
+    color: var(--dark);
+}
+.footer p{
+    margin: 20px;
+}
+/*................................FOOTER        end.........................*/
